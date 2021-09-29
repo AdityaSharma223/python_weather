@@ -1,21 +1,23 @@
 import python_weather
 import asyncio
+CityName = "New Delhi"
 
 async def getweather():
+    # our list for storing the weather for the next few days
+    a = []
+
     # declare the client. format defaults to the metric system (celcius, km/h, etc.)
     client = python_weather.Client(format=python_weather.METRIC)
 
     # fetch a weather forecast from a city
-    weather = await client.find("New Delhi")
+    weather = await client.find("{}".format(CityName))
 
-    # returns the current day's forecast temperature (int)
-    print(weather.current.temperature)
-    a = []
     # get the weather forecast for a few days
     for forecast in weather.forecasts:
         a.append([str(forecast.date), forecast.sky_text, forecast.temperature])
-    print(x for x in a)
-    print(a)
+
+    for i in a:
+        print(i, end="\n")
     # close the wrapper once done
     await client.close()
 
