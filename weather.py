@@ -1,6 +1,6 @@
 import python_weather
 import asyncio
-CityName = "New Delhi"
+CityName = input('what is the name of your city ? ')
 
 async def getweather():
     # our list for storing the weather for the next few days
